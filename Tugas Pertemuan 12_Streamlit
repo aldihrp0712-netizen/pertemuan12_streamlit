@@ -1,0 +1,78 @@
+import streamlit as st 
+ 
+st.write(
+    """
+    # DIWEB
+    Hello,Project Streamlit Aldi Togar_4232401018!
+    """
+)
+import streamlit as st
+import pandas as pd
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Judul & Subjudul
+st.title("Dashboard Simulasi Skor Penjualan")
+st.subheader("Praktikum Python Dasar – Pertemuan 12")
+
+st.write("""
+Aplikasi ini dibuat menggunakan **Streamlit** sebagai bagian dari tugas praktikum.
+Tujuan aplikasi ini adalah menampilkan **data, tabel, dan grafik** secara interaktif
+menggunakan Python.
+""")
+
+st.divider()
+
+# Keterangan
+st.markdown("### Keterangan")
+st.info(
+    "Data berikut merupakan data simulasi skor penjualan berdasarkan "
+    "jumlah produk yang terjual."
+)
+
+# Menampilkan Potongan Kode
+st.markdown("###  Contoh Potongan Kode Python")
+
+code_example = """
+def hitung_total_penjualan(jumlah, harga):
+    total = jumlah * harga
+    return total
+"""
+
+st.code(code_example, language="python")
+
+# Data & DataFrame
+st.markdown("###  Data Penjualan")
+
+data = {
+    "Jumlah Terjual": [10, 20, 30, 40, 50],
+    "Skor Penjualan": [100, 180, 260, 340, 420]
+}
+
+df = pd.DataFrame(data)
+st.dataframe(df, use_container_width=True)
+
+# Grafik Matplotlib
+st.markdown("###  Grafik Hubungan Jumlah Terjual dan Skor Penjualan")
+
+fig, ax = plt.subplots()
+ax.plot(
+    df["Jumlah Terjual"],
+    df["Skor Penjualan"],
+    marker="o"
+)
+
+ax.set_xlabel("Jumlah Terjual")
+ax.set_ylabel("Skor Penjualan")
+ax.set_title("Grafik Penjualan")
+
+st.pyplot(fig)
+
+# Kesimpulan
+st.markdown("### Kesimpulan")
+st.success(
+    "Dari grafik di atas dapat disimpulkan bahwa skor penjualan "
+    "meningkat secara linear seiring bertambahnya jumlah produk terjual."
+)
+
+st.caption("Nama: Aldi Togar | Praktikum Python Dasar")
